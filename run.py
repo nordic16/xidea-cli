@@ -12,7 +12,7 @@ def main():
     # parser for the new command
     newnote_parser = subparsers.add_parser('new', help='Create a new note.')
     newnote_parser.add_argument('-t', '--title', required=True)    
-    newnote_parser.add_argument('-d', '--description', type=str)    
+    newnote_parser.add_argument('-d', '--description')    
     newnote_parser.add_argument('-c', '--content', required=True)
     newnote_parser.add_argument('-f', '--file', required=True, help='File where notes will be stored.')  
 

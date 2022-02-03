@@ -3,7 +3,6 @@ import pickle
 
 def retrieve_notes(path: str) -> []:
     """Writes all notes to the desired file."""
-
     notes = []
 
     try:

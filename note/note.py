@@ -11,9 +11,9 @@ class Note:
         self.description = description
         self.content = content
         self.id = ''.join([random.choice(string.ascii_letters
-            + string.digits) for n in range(32)])
+            + string.digits) for n in range(24)])
 
     def __str__(self):
-        return f'[{self.title}, {self.description}, {self.content}]'
+        return f'[{self.title}, {self.description}, {self.content}, {self.id}]'
 
     
