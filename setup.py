@@ -1,5 +1,4 @@
-# Always prefer setuptools over distutils
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
@@ -12,10 +11,11 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='xnote',  # Required
-    version='1.0.0',  # Required
+    version= '1.1a',  # Required
     description='Easily keep track of your notes on your favorite terminal emulator!',  # Optional
-    url='https://github.com/nordic16/xnote-cli',  # Optional
-    author='nordic16',  # Optional
+    url='https://pypi.org/project/xnote/',  # Optional
+    author='xKyFal',  # Optional
+    long_description=long_description,
 
     # Classifiers help users find your project by categorizing it.
     #
@@ -53,11 +53,17 @@ setup(
     # by commas, to be used to assist searching for the distribution in a
     # larger catalog.
     keywords='command-line, cli, notes, thoughts',  # Optional
-    packages=find_packages(),  # Required
+    packages=find_namespace_packages(include=('xnote', 'xnote.*')),  # Required
 
     # Specify which Python versions you support. In contrast to the
     # 'Programming Language' classifiers above, 'pip install' will check this
     # and refuse to install the project if the version does not match. See
     # https://packaging.python.org/guides/distributing-packages-using-setuptools/#python-requires
     python_requires='>=3.6, <4',
+
+    entry_points="""
+    [console_scripts]
+    xnote=xnote.__main__:main
+    """,    
+
 )

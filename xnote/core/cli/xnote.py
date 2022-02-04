@@ -1,13 +1,9 @@
-from note.note import Note
-from config import manage_data
+import argparse, pickle
+from xnote.core.codebase.note import Note, retrieve_notes, write_notes
 
-import pickle
-import argparse
-
-
-def main():
+def start():
     parser = argparse.ArgumentParser(description='Easily keep track of your notes on your favorite terminal emulator!')
-    subparsers = parser.add_subparsers(dest='subcommand', prog="xnote")
+    subparsers = parser.add_subparsers(dest='subcommand')
 
     # parser for the new command
     newnote_parser = subparsers.add_parser('new', help='Create a new note.')
@@ -22,9 +18,8 @@ def main():
     
     args = parser.parse_args()
 
-            
     try:
-        notes = manage_data.retrieve_notes(args.file)  
+        notes = retrieve_notes(args.file)  
     
     except AttributeError:
         print("Invalid usage. Type xnote -h for help.")
@@ -33,11 +28,7 @@ def main():
         note = Note(args.title, args.description, args.content)
         notes.append(note)
 
-        manage_data.write_notes(args.file, notes)
+        write_notes(args.file, notes)
 
     elif args.subcommand == 'list':
         [print(x) for x in notes]        
-
-
-if __name__ == '__main__':
-    main()
