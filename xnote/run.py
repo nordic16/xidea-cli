@@ -7,7 +7,7 @@ import argparse
 
 def main():
     parser = argparse.ArgumentParser(description='Easily keep track of your notes on your favorite terminal emulator!')
-    subparsers = parser.add_subparsers(dest='subcommand')
+    subparsers = parser.add_subparsers(dest='subcommand', prog="xnote")
 
     # parser for the new command
     newnote_parser = subparsers.add_parser('new', help='Create a new note.')
@@ -22,8 +22,13 @@ def main():
     
     args = parser.parse_args()
 
-    notes = manage_data.retrieve_notes(args.file)  
             
+    try:
+        notes = manage_data.retrieve_notes(args.file)  
+    
+    except AttributeError:
+        print("Invalid usage. Type xnote -h for help.")
+        
     if args.subcommand == 'new':
         note = Note(args.title, args.description, args.content)
         notes.append(note)
@@ -31,7 +36,7 @@ def main():
         manage_data.write_notes(args.file, notes)
 
     elif args.subcommand == 'list':
-        [print(x) for x in notes]
+        [print(x) for x in notes]        
 
 
 if __name__ == '__main__':

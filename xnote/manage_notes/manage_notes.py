@@ -2,7 +2,7 @@ import pickle
 
 
 def retrieve_notes(path: str) -> []:
-    """Writes all notes to the desired file."""
+    """Retrieves a list of notes from the desired file."""
     notes = []
 
     try:
@@ -20,5 +20,6 @@ def retrieve_notes(path: str) -> []:
 
 
 def write_notes(path: str, notes: []):
+    """Writes all notes to the desired file."""
     with open(path, 'wb') as f:
         pickle.dump(obj=notes, file=f)
