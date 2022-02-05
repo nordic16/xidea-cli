@@ -26,7 +26,7 @@ class Note:
             exit(-1)
 
     def __str__(self):
-        return f'Title: {self.title}\nDescription: {self.description}\nContent: {self.content}\nID: {self.id}]'
+        return f'Title: {self.title}\nDescription: {self.description}\nContent: {self.content}\nID: {self.id}'
 
 
 def retrieve_notes(path: str) -> []:
@@ -51,3 +51,20 @@ def write_notes(path: str, notes: []):
     """Writes all notes to the desired file."""
     with open(path, 'wb') as f:
         pickle.dump(obj=notes, file=f)
+
+
+def remove_note(id: str, notes: [], file : str):
+    try:
+        removed = None
+
+        for i in notes:
+            if i.id == id:
+                removed = i 
+
+        # ValueError is raised if the code tries to remove None from notes.
+        notes.remove(removed)
+        print(f"Successfully removed.")
+        write_notes(file, notes)
+
+    except ValueError:
+        print("Couldn't find note!")
