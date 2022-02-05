@@ -1,5 +1,6 @@
 import random, string
 import pickle
+from xnote.core.constants import *
 
 class Note:
     title: str
@@ -8,16 +9,24 @@ class Note:
     id: str
 
 
-    def __init__(self, title, description, content):
-        self.title = title
-        self.description = description
-        self.content = content
-        self.id = ''.join([random.choice(string.ascii_letters
-            + string.digits) for n in range(24)])
+    def __init__(self, title : str, description : str, content : str):
+        if len(title) <= MAX_TITLE_LENGTH and len(description) <= MAX_DESC_LENGTH and len(content) <= MAX_CONTENT_LENGTH:
+            self.title = title
+            self.description = description
+            self.content = content
+            self.id = ''.join([random.choice(string.ascii_letters
+                + string.digits) for n in range(24)])
+        
+        else:
+            print("Error: One of the fields is larger than what it should be.\n")
+            print("Here are the max length for each field:",
+                f"Title: {MAX_TITLE_LENGTH}", f"Description: {MAX_DESC_LENGTH}", f"Content: {MAX_CONTENT_LENGTH}", sep='\n')
 
+            # Prevents this note from being created.
+            exit(-1)
 
     def __str__(self):
-        return f'[{self.title}, {self.description}, {self.content}, {self.id}]'
+        return f'Title: {self.title}\nDescription: {self.description}\nContent: {self.content}\nID: {self.id}]'
 
 
 def retrieve_notes(path: str) -> []:

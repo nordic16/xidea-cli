@@ -25,10 +25,11 @@ def start():
         print("Invalid usage. Type xnote -h for help.")
         
     if args.subcommand == 'new':
-        note = Note(args.title, args.description, args.content)
+        description = args.description if args.description else "No description."
+        note = Note(args.title, description, args.content)
         notes.append(note)
 
         write_notes(args.file, notes)
 
     elif args.subcommand == 'list':
-        [print(x) for x in notes]        
+        [print(f'{x}\n') for x in notes]        

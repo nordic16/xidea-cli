@@ -11,7 +11,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='xnote',  # Required
-    version= '1.1a',  # Required
+    version= '1.1a1',  # Required
     description='Easily keep track of your notes on your favorite terminal emulator!',  # Optional
     url='https://pypi.org/project/xnote/',  # Optional
     author='xKyFal',  # Optional
