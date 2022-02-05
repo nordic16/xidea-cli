@@ -18,7 +18,7 @@ def start():
     
     # parser for the remove command
     removenote_parser = subparsers.add_parser('remove', help='Removes a note from a list.')
-    removenote_parser.add_argument('-i', '--id', required=True)
+    removenote_parser.add_argument('-i', '--id', required=True, help='Use the list command to retrieve the id.')
     removenote_parser.add_argument('-f', '--file', required=True, help='File to remove this note from.')
 
     args = parser.parse_args()
