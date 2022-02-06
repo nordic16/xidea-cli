@@ -38,6 +38,7 @@ def start():
 
         write_notes(args.file, notes)
 
+    # The case where the user doesn't want to filter anything doesn't have to be handled manually :)
     elif args.subcommand == 'list':
         if args.filter:
             list_notes(notes, args.filter, False)
