@@ -68,3 +68,17 @@ def remove_note(id: str, notes: [], file : str):
 
     except ValueError:
         print("Couldn't find note!")
+        
+        
+def list_notes(notes: [], query):
+    """Lists all notes within a file. It also provides filtering."""
+    if len(notes) > 0:
+        if not query:
+            [print(f'{x}\n') for x in notes]
+        
+        else:
+            [print(f'{x}\n') for x in filter(
+                lambda note: query in note.title, 
+                  notes)]
+    else:
+        print("Looks like this file is empty.")        

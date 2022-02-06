@@ -1,5 +1,5 @@
 import argparse, pickle
-from xnote.core.codebase.note import Note, retrieve_notes, write_notes, remove_note
+from xnote.core.codebase.note import *
 
 def start():
     parser = argparse.ArgumentParser(description='Easily keep track of your notes on your favorite terminal emulator!')
@@ -15,6 +15,7 @@ def start():
     # parser for the list command
     listnote_parser = subparsers.add_parser('list', help='List all notes from a file.')  
     listnote_parser.add_argument('-f', '--file', required=True, help='File to list notes from.')  
+    listnote_parser.add_argument('--filter', help='Filters the output of the list command.')
     
     # parser for the remove command
     removenote_parser = subparsers.add_parser('remove', help='Removes a note from a list.')
@@ -37,10 +38,7 @@ def start():
         write_notes(args.file, notes)
 
     elif args.subcommand == 'list':
-        [print(f'{x}\n') for x in notes]
-
-        if len(notes) == 0: 
-            print("Looks like this file is empty!")        
-
+        list_notes(notes, args.filter)
+        
     elif args.subcommand == 'remove':
         remove_note(args.id, notes, args.file)

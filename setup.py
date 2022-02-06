@@ -1,6 +1,6 @@
 from setuptools import setup, find_namespace_packages
 import pathlib
-from xnote.core.__version__ import latest_alpha_release
+from xnote.core.__version__ import *
 
 here = pathlib.Path(__file__).parent.resolve()
 
@@ -12,7 +12,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='xnote',  # Required
-    version= latest_alpha_release,  # Required
+    version= latest_stable_release,  # Required
     description='Easily keep track of your notes on your favorite terminal emulator!',  # Optional
     url='https://pypi.org/project/xnote/',  # Optional
     author='xKyFal',  # Optional
