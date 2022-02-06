@@ -14,11 +14,12 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='xnote',  # Required
-    version= latest_stable_release,  # Required
+    version= latest_alpha_release,  # Required
     description='Easily keep track of your notes on your favorite terminal emulator!',  # Optional
     url='https://pypi.org/project/xnote/',  # Optional
     author='xKyFal',  # Optional
     long_description="{}\n\n{}".format(long_description, changelog),
+    long_description_content_type='text/markdown',
 
     # Classifiers help users find your project by categorizing it.
     #
