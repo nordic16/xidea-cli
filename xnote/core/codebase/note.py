@@ -70,15 +70,20 @@ def remove_note(id: str, notes: [], file : str):
         print("Couldn't find note!")
         
         
-def list_notes(notes: [], query):
-    """Lists all notes within a file. It also provides filtering."""
+def list_notes(notes: [], query, inverted : bool):
+    """Lists all notes within a file. It also provides filtering.
+        the "inverted" parameter controls whether the notes whose title
+        is equal to query are shown to the user or filtered out.
+    """
+        
     if len(notes) > 0:
         if not query:
             [print(f'{x}\n') for x in notes]
         
         else:
             [print(f'{x}\n') for x in filter(
-                lambda note: query in note.title, 
-                  notes)]
+                lambda note: query not in note.title if inverted 
+                    else query in note.title, notes
+            )]
     else:
         print("Looks like this file is empty.")        

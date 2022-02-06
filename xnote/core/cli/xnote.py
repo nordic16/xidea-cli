@@ -15,7 +15,8 @@ def start():
     # parser for the list command
     listnote_parser = subparsers.add_parser('list', help='List all notes from a file.')  
     listnote_parser.add_argument('-f', '--file', required=True, help='File to list notes from.')  
-    listnote_parser.add_argument('--filter', help='Filters the output of the list command.')
+    listnote_parser.add_argument('--filter', help='Prints all notes whose title match the query.')
+    listnote_parser.add_argument('--filter-not', help='Prints all notes whose title *doesn\'t* match the query.')
     
     # parser for the remove command
     removenote_parser = subparsers.add_parser('remove', help='Removes a note from a list.')
@@ -38,7 +39,10 @@ def start():
         write_notes(args.file, notes)
 
     elif args.subcommand == 'list':
-        list_notes(notes, args.filter)
+        if args.filter:
+            list_notes(notes, args.filter, False)
+        else:
+            list_notes(notes, args.filter_not, True)
         
     elif args.subcommand == 'remove':
         remove_note(args.id, notes, args.file)
