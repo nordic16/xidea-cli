@@ -1,7 +1,5 @@
 from xnote.core.cli import xnote
 
-import argparse
-
 def main():
     xnote.start()
 

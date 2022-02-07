@@ -15,7 +15,7 @@ def start():
     # parser for the list command
     listnote_parser = subparsers.add_parser('list', help='List all notes from a file.')  
     listnote_parser.add_argument('-f', '--file', required=True, help='File to list notes from.')  
-    listnote_parser.add_argument('--filter', help='Prints all notes whose title match the query.')
+    listnote_parser.add_argument('--filter', help='Prints all notes whose title match the query.', metavar='query')
     listnote_parser.add_argument('--filter-not', help='Prints all notes whose title *doesn\'t* match the query.')
     
     # parser for the remove command

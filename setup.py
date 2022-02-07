@@ -14,7 +14,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='xnote',  # Required
-    version= latest_alpha_release,  # Required
+    version= latest_stable_release,  # Required
     description='Easily keep track of your notes on your favorite terminal emulator!',  # Optional
     url='https://pypi.org/project/xnote/',  # Optional
     author='xKyFal',  # Optional
@@ -29,7 +29,7 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',

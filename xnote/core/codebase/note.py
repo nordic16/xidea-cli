@@ -1,21 +1,24 @@
 import random, string
 import pickle
 from xnote.core.constants import *
+from datetime import datetime
 
 class Note:
     title: str
     description: str
     content: str
-    id: str
-
+    uid: str
+    time_of_creation: datetime
 
     def __init__(self, title : str, description : str, content : str):
         if len(title) <= MAX_TITLE_LENGTH and len(description) <= MAX_DESC_LENGTH and len(content) <= MAX_CONTENT_LENGTH:
             self.title = title
             self.description = description
             self.content = content
-            self.id = ''.join([random.choice(string.ascii_letters
+            self.uid = ''.join([random.choice(string.ascii_letters
                 + string.digits) for n in range(24)])
+            
+            self.time_of_creation = datetime.now()
         
         else:
             print("Error: One of the fields is larger than what it should be.\n")
@@ -26,7 +29,9 @@ class Note:
             exit(-1)
 
     def __str__(self):
-        return f'Title: {self.title}\nDescription: {self.description}\nContent: {self.content}\nID: {self.id}'
+        return f'Title: {self.title}\nDescription: {self.description}\n'\
+            f'Content: {self.content}\nID: {self.uid}\n'\
+            f'Time of Creation: {self.time_of_creation.strftime("%A, %B %d %Y, %X")}'
 
 
 def retrieve_notes(path: str) -> []:
